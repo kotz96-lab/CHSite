@@ -1,0 +1,64 @@
+/* Gameplay grid — Riot "featured + stacked" layout */
+.gameplay__grid { display: grid; grid-template-columns: 1.7fr 1fr; gap: 20px; }
+.gameplay__side { display: grid; grid-template-rows: repeat(3, 1fr); gap: 20px; }
+.gameplay__side .tile { aspect-ratio: auto; }
+.gameplay__side .tile img { position: absolute; inset: 0; }
+.tile {
+  position: relative; display: block; overflow: hidden; cursor: pointer;
+  border: 3px solid #000; background: var(--ink-3); aspect-ratio: 16 / 9;
+}
+.tile--feature { aspect-ratio: 16 / 10; }
+.tile--feature img { position: absolute; inset: 0; }
+.tile img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s var(--ease-out), filter 0.5s; filter: saturate(0.9) brightness(0.85); }
+.tile:hover img { transform: scale(1.06); filter: saturate(1.1) brightness(1); }
+.tile::before {
+  content: ''; position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(transparent 45%, rgb(0 0 0 / 0.85));
+}
+.tile::after {
+  content: ''; position: absolute; inset: 0; z-index: 2; border: 0 solid var(--blood);
+  transition: border-width 0.25s;
+}
+.tile:hover::after { border-width: 4px; }
+.tile__play {
+  position: absolute; z-index: 3; left: 50%; top: 50%; translate: -50% -50%;
+  width: 76px; height: 76px; border-radius: 50%; background: var(--blood); border: 3px solid #000;
+  box-shadow: 0 0 0 0 rgb(215 24 42 / 0.6); animation: pulse 2.2s infinite;
+  transition: transform 0.3s var(--ease-out);
+}
+.tile__play::before {
+  content: ''; position: absolute; left: 54%; top: 50%; translate: -50% -50%;
+  border: 14px solid transparent; border-left: 22px solid #fff; border-right: 0;
+}
+.gameplay__side .tile__play { width: 52px; height: 52px; }
+.gameplay__side .tile__play::before { border-width: 10px 0 10px 16px; }
+.tile:hover .tile__play { transform: scale(1.12); }
+@keyframes pulse { 70% { box-shadow: 0 0 0 22px rgb(215 24 42 / 0); } 100% { box-shadow: 0 0 0 0 rgb(215 24 42 / 0); } }
+.tile__label {
+  position: absolute; z-index: 3; left: 20px; right: 20px; bottom: 16px;
+  font: 600 15px/1.3 var(--f-body); color: var(--bone-dim);
+}
+.tile__label b { display: block; font: 400 clamp(22px, 2.2vw, 34px)/1 var(--f-display); text-transform: uppercase; color: #fff; }
+.tile--feature .tile__label b { font-size: clamp(32px, 4vw, 60px); }
+
+@media (max-width: 860px) {
+  .gameplay__grid { grid-template-columns: 1fr; }
+  .tile--feature, .gameplay__side .tile { aspect-ratio: 16 / 9; }
+  .gameplay__side { grid-template-rows: none; }
+}
+
+/* How it plays — Blizzard tab carousel */
+.how { --world: var(--hazard); }
+.how__stage { display: flex; align-items: center; gap: 24px; }
+.how__panel { flex: 1; display: grid; grid-template-columns: 1fr 1.35fr; gap: clamp(24px, 5vw, 72px); align-items: center; min-height: 420px; }
+.how__num { display: block; font: 400 120px/0.8 var(--f-display); color: transparent; -webkit-text-stroke: 2px var(--blood); margin-bottom: 12px; }
+.how__text p { margin: 0; max-width: 42ch; color: var(--bone-dim); font-size: 19px; }
+.how__media { aspect-ratio: 16 / 9; overflow: hidden; background: var(--ink-3); }
+.how__media img { width: 100%; height: 100%; object-fit: cover; }
+
+@media (max-width: 860px) {
+  .how__panel { grid-template-columns: 1fr; min-height: 0; }
+  .how__media { order: -1; }
+  .how__stage .arrow { display: none; }
+  .how__num { font-size: 72px; }
+}

@@ -1,0 +1,57 @@
+/* Riot-style slanted cards. Hovered card widens, the rest compress. */
+.bosses { max-width: none; padding-inline: 0; }
+.bosses .section__head { max-width: var(--max); margin-inline: auto; padding-inline: var(--gutter); }
+.bosses__row { display: flex; gap: 10px; height: clamp(460px, 68vh, 720px); padding: 0 var(--gutter); }
+.boss {
+  position: relative; flex: 1 1 0; min-width: 0; cursor: pointer; outline: none;
+  transition: flex-grow 0.7s var(--ease-out);
+}
+.boss.is-open { flex-grow: 3.2; }
+.boss__skew {
+  position: absolute; inset: 0; overflow: hidden; transform: skewX(var(--slant));
+  border: 3px solid #000; background:
+    radial-gradient(90% 60% at 50% 35%, color-mix(in srgb, var(--boss) 85%, #fff 10%), transparent 70%),
+    linear-gradient(160deg, var(--boss), color-mix(in srgb, var(--boss) 30%, #000));
+}
+.boss:focus-visible .boss__skew { outline: 3px solid var(--hazard); outline-offset: 3px; }
+.boss__skew::after {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(transparent 50%, rgb(0 0 0 / 0.85));
+}
+.boss__art {
+  position: absolute; inset: 0 -30%; display: grid; place-items: center;
+  transform: skewX(calc(var(--slant) * -1));
+}
+.boss__art img {
+  width: min(80%, 520px); max-height: 70%; object-fit: contain;
+  filter: drop-shadow(0 20px 30px rgb(0 0 0 / 0.6)) grayscale(0.6) brightness(0.7);
+  transform: scale(0.85) translateY(-6%); transition: transform 0.8s var(--ease-out), filter 0.5s;
+}
+.boss.is-open .boss__art img { filter: drop-shadow(0 24px 40px rgb(0 0 0 / 0.6)); transform: scale(1) translateY(-8%); }
+.boss__text {
+  position: absolute; z-index: 1; left: 0; right: 0; bottom: 24px; padding: 0 28px;
+  transform: skewX(calc(var(--slant) * -1));
+}
+.boss__world { font: 800 13px/1 var(--f-cond); letter-spacing: 0.24em; text-transform: uppercase; color: var(--hazard); }
+.boss__name {
+  margin: 8px 0 0; font: 400 clamp(26px, 2.6vw, 44px)/0.95 var(--f-display); text-transform: uppercase;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.boss__line {
+  margin: 8px 0 0; font-weight: 600; color: var(--bone-dim); max-height: 0; opacity: 0; overflow: hidden;
+  transition: opacity 0.4s, max-height 0.6s var(--ease-out);
+}
+.boss.is-open .boss__line { max-height: 3em; opacity: 1; }
+.boss__text { transition: opacity 0.4s; }
+.boss:not(.is-open) .boss__text { opacity: 0; }
+
+@media (max-width: 860px) {
+  .bosses__row { overflow-x: auto; scroll-snap-type: x mandatory; height: 520px; padding-bottom: 12px; }
+  .boss, .boss.is-open { flex: 0 0 78vw; scroll-snap-align: center; }
+  .boss__skew, .boss__art, .boss__text { transform: none; }
+  .boss__art { inset: 0; }
+  .boss .boss__art img { filter: drop-shadow(0 20px 30px rgb(0 0 0 / 0.6)); }
+  .boss .boss__line { max-height: 3em; opacity: 1; }
+  .boss .boss__text { opacity: 1; }
+  .boss .boss__name { font-size: 34px; }
+}

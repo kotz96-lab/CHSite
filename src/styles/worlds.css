@@ -1,0 +1,39 @@
+.worlds {
+  --world: var(--rot);
+  position: relative; min-height: 100svh; overflow: hidden; isolation: isolate;
+  display: flex; align-items: center; justify-content: center;
+  padding: clamp(80px, 10vw, 140px) var(--gutter);
+}
+.worlds__bgs { position: absolute; inset: -8% 0; z-index: -2; }
+.worlds__bg { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; }
+.worlds__bg.is-prev { opacity: 1; }
+.worlds__bg.is-active { opacity: 1; z-index: 1; }
+.worlds__shade {
+  position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background:
+    linear-gradient(var(--ink) 0%, rgb(13 9 9 / 0.55) 22%, rgb(13 9 9 / 0.25) 50%, rgb(13 9 9 / 0.85) 82%, var(--ink) 100%),
+    radial-gradient(80% 60% at 50% 50%, transparent, rgb(13 9 9 / 0.6));
+}
+.worlds__inner { width: 100%; max-width: 1100px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+.worlds .h2 { text-shadow: 0 4px 30px #000; }
+.tabs--light .tab { color: rgb(243 233 220 / 0.7); text-shadow: 0 2px 8px #000; }
+.worlds__info { margin-top: clamp(120px, 22vh, 260px); max-width: 640px; }
+.worlds__name {
+  margin: 0 0 12px; font: 400 clamp(52px, 7vw, 96px)/0.9 var(--f-display); text-transform: uppercase;
+  -webkit-text-stroke: 3px #000; paint-order: stroke fill; text-shadow: 6px 6px 0 #000;
+}
+.worlds__body { margin: 0 auto 22px; max-width: 46ch; font-weight: 600; text-shadow: 0 2px 10px #000; }
+.worlds__levels { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+.worlds__levels li {
+  padding: 8px 14px; background: rgb(13 9 9 / 0.8); border: 2px solid #000;
+  font: 800 14px/1 var(--f-cond); letter-spacing: 0.12em; text-transform: uppercase;
+  transform: skewX(var(--slant));
+}
+.worlds__levels li.is-boss { background: var(--world); color: #000; }
+.worlds > .arrow { position: absolute; top: 50%; translate: 0 -50%; }
+.worlds > .arrow--prev { left: var(--gutter); }
+.worlds > .arrow--next { right: var(--gutter); }
+@media (max-width: 760px) {
+  .worlds > .arrow { top: auto; bottom: 24px; translate: none; width: 48px; height: 48px; }
+  .worlds__info { margin-top: 80px; }
+}

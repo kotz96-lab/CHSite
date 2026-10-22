@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Barrel Storm</title>
+  <meta name="description" content="Barrel Storm — a zombie horde shooter. Six worlds, six bosses, one nail gun. Out now on Google Play." />
+  <meta name="theme-color" content="#0d0909" />
+  <link rel="icon" href="/img/hero-char.webp" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:wght@400;600;800&family=Barlow+Condensed:wght@600;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="nav" data-nav>
+    <a href="#top" class="nav__logo">BARREL<span>STORM</span></a>
+    <nav class="nav__links">
+      <a href="#gameplay">Gameplay</a>
+      <a href="#how">How it plays</a>
+      <a href="#worlds">Worlds</a>
+      <a href="#bosses">Bosses</a>
+      <a href="#arsenal">Arsenal</a>
+    </nav>
+    <a class="btn btn--sm" data-play-link target="_blank" rel="noopener">Get the game</a>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <div class="hero__layer hero__bg" data-slot="hero-bg" style="background-image:url(/img/hero-bg.webp)"></div>
+      <div class="hero__layer hero__horde" data-slot="hero-horde"></div>
+      <div class="hero__embers" aria-hidden="true"></div>
+      <div class="hero__char" data-slot="hero-char"><img src="/img/hero-char.webp" alt="The hoodie kid with his nail gun, surrounded by zombie hands" /></div>
+      <div class="hero__layer hero__hands" data-slot="hero-hands"></div>
+      <div class="hero__content">
+        <p class="kicker">Zombie horde shooter · Android</p>
+        <h1 class="hero__title" data-slot="logo"><span>Barrel</span><span>Storm</span></h1>
+        <p class="hero__tag">Six worlds. Six bosses. One hoodie and a nail gun against everything.</p>
+        <div class="hero__ctas">
+          <a class="btn btn--play" data-play-link target="_blank" rel="noopener" data-slot="badge-google-play">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2.5v19l16-9.5z"/></svg>
+            <span><small>Get it on</small>Google Play</span>
+          </a>
+          <a class="btn btn--ghost" href="#gameplay">Watch gameplay</a>
+        </div>
+      </div>
+      <div class="hero__scroll" aria-hidden="true">Scroll</div>
+    </section>
+
+    <!-- GAMEPLAY -->
+    <section class="section gameplay" id="gameplay">
+      <div class="section__head">
+        <p class="kicker">See it move</p>
+        <h2 class="h2">Gameplay</h2>
+      </div>
+      <div class="gameplay__grid">
+        <a class="tile tile--feature" data-slot="video-trailer">
+          <img src="/img/still-horde.webp" alt="" loading="lazy" />
+          <span class="tile__play" aria-hidden="true"></span>
+          <span class="tile__label"><b>The full run</b> Five waves, one boss, zero breaks</span>
+        </a>
+        <div class="gameplay__side">
+          <a class="tile" data-slot="video-boss"><img src="/img/still-boss.webp" alt="" loading="lazy" /><span class="tile__play" aria-hidden="true"></span><span class="tile__label"><b>Boss fight</b> Zombie Claus</span></a>
+          <a class="tile" data-slot="video-horde"><img src="/img/still-horde.webp" alt="" loading="lazy" /><span class="tile__play" aria-hidden="true"></span><span class="tile__label"><b>The horde</b> Wave four hits</span></a>
+          <a class="tile" data-slot="video-build"><img src="/img/still-upgrade.webp" alt="" loading="lazy" /><span class="tile__play" aria-hidden="true"></span><span class="tile__label"><b>Broken build</b> Everything explodes</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT PLAYS -->
+    <section class="section how" id="how">
+      <div class="section__head section__head--center">
+        <p class="kicker">How it plays</p>
+        <h2 class="h2">One thumb. Total chaos.</h2>
+      </div>
+      <div class="tabs" role="tablist" data-how-tabs></div>
+      <div class="how__stage">
+        <button class="arrow arrow--prev" data-how-prev aria-label="Previous step"></button>
+        <div class="how__panel" data-how-panel></div>
+        <button class="arrow arrow--next" data-how-next aria-label="Next step"></button>
+      </div>
+      <div class="dots" data-how-dots></div>
+    </section>
+
+    <!-- THE RUN (pinned, scrubbed) -->
+    <section class="run" id="run" data-slot="run-bg">
+      <div class="run__pin">
+        <div class="run__bg"></div>
+        <div class="run__clock"><span data-run-clock>0:00</span></div>
+        <div class="run__phases">
+          <p data-phase="0"><b>Waves 1–3</b> Build up. Grab cages. Get strong.</p>
+          <p data-phase="1"><b>Wave 4</b> The belt breaks. The horde arrives.</p>
+          <p data-phase="2"><b>Wave 5</b> Hold the line. Then the boss.</p>
+        </div>
+        <h2 class="run__wall">The Wall</h2>
+      </div>
+    </section>
+
+    <!-- WORLDS -->
+    <section class="worlds" id="worlds">
+      <div class="worlds__bgs" data-worlds-bgs></div>
+      <div class="worlds__shade"></div>
+      <div class="worlds__inner">
+        <div class="section__head section__head--center">
+          <p class="kicker">Six worlds · Eighteen levels</p>
+          <h2 class="h2">Fight across town</h2>
+        </div>
+        <div class="tabs tabs--light" role="tablist" data-worlds-tabs></div>
+        <div class="worlds__info" data-worlds-info></div>
+      </div>
+      <button class="arrow arrow--prev" data-worlds-prev aria-label="Previous world"></button>
+      <button class="arrow arrow--next" data-worlds-next aria-label="Next world"></button>
+    </section>
+
+    <!-- BOSSES -->
+    <section class="section bosses" id="bosses">
+      <div class="section__head">
+        <p class="kicker">Every world ends with one</p>
+        <h2 class="h2">The Bosses</h2>
+      </div>
+      <div class="bosses__row" data-bosses></div>
+    </section>
+
+    <!-- ARSENAL -->
+    <section class="section arsenal" id="arsenal">
+      <div class="arsenal__grid">
+        <div>
+          <div class="section__head">
+            <p class="kicker">Build it your way</p>
+            <h2 class="h2">The Arsenal</h2>
+          </div>
+          <div class="accordion" data-arsenal-list></div>
+        </div>
+        <div class="frame arsenal__panel" data-arsenal-panel></div>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="cta" data-slot="cta-bg">
+      <div class="cta__burst"></div>
+      <img class="cta__char" src="/img/hero-char.webp" alt="" loading="lazy" />
+      <div class="cta__content">
+        <h2 class="h2 cta__title">The horde is waiting.</h2>
+        <p>Out now on Android.</p>
+        <a class="btn btn--play" data-play-link target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2.5v19l16-9.5z"/></svg>
+          <span><small>Get it on</small>Google Play</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>© 2026 Shai Cool Games</span>
+    <a data-play-link target="_blank" rel="noopener">Google Play</a>
+  </footer>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

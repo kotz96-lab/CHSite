@@ -1,0 +1,27 @@
+/* Palette pulled from the game icon: blood-red burst, nail-gun hazard yellow,
+   hoodie cyan, zombie green, on scorched near-black. */
+:root {
+  --ink: #0d0909;
+  --ink-2: #181010;
+  --ink-3: #241817;
+  --line: #3a2a27;
+  --bone: #f3e9dc;
+  --bone-dim: #b9aa9a;
+  --blood: #d7182a;
+  --blood-deep: #7a0a14;
+  --ember: #ff6a1a;
+  --hazard: #ffc21a;
+  --hoodie: #19b8ff;
+  --rot: #7fc243;
+
+  --f-display: 'Anton', 'Impact', sans-serif;
+  --f-cond: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  --f-body: 'Barlow', system-ui, sans-serif;
+
+  --gutter: clamp(16px, 4vw, 64px);
+  --max: 1440px;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --slant: -8deg;
+
+  color-scheme: dark;
+}

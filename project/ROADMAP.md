@@ -2,22 +2,26 @@
 
 ## Phase 0 — Setup
 - [x] Repo + design brief + references
-- [ ] Pick display + body fonts
-- [ ] Generate hero key art (layered) + world backgrounds + boss panels
+- [x] Pick fonts — Anton (display), Barlow Condensed (labels), Barlow (body)
+- [x] Art plan + prompts (`ART_PROMPTS.md`)
+- [ ] Generate final art (hero layers, worlds, bosses, icons)
 - [ ] Get gameplay footage from user
 
 ## Phase 1 — Build
-- [ ] Project setup (Vite/Astro, GSAP, Lenis)
-- [ ] Hero (parallax layers, CTA)
-- [ ] Trailer / gameplay grid
-- [ ] How It Plays (tab carousel)
-- [ ] The Worlds (zone tabs)
-- [ ] The Bosses (slanted cards)
-- [ ] Arsenal (accordion)
-- [ ] Final CTA + footer
+- [x] Project setup (Vite, GSAP ScrollTrigger, Lenis)
+- [x] Hero (parallax layers, embers, CTA)
+- [x] Gameplay grid (placeholder stills)
+- [x] How It Plays (tab carousel)
+- [x] The Run (pinned 0:00→5:00 clock, THE WALL slam)
+- [x] The Worlds (zone tabs, circle-wipe backgrounds)
+- [x] The Bosses (slanted expanding cards)
+- [x] Arsenal (accordion + framed item grid)
+- [x] Final CTA + footer
+- [ ] Video playback (tiles → lightbox) once footage exists
 
 ## Phase 2 — Ship
-- [ ] Mobile pass (most traffic will be phones)
-- [ ] Performance (image compression, lazy video)
+- [x] Mobile layout pass (first round)
+- [ ] Swap in final art, re-check mobile
+- [ ] Performance (video lazy-load, image sizes)
 - [ ] SEO/meta/OG image
 - [ ] Vercel deploy + domain

@@ -1,0 +1,91 @@
+.hero {
+  position: relative; height: 100svh; min-height: 640px; overflow: hidden;
+  display: flex; align-items: center; padding: 0 var(--gutter); isolation: isolate;
+}
+.hero__layer { position: absolute; inset: 0; pointer-events: none; }
+.hero__bg {
+  z-index: -4; inset: -6%; background-size: cover; background-position: center 40%;
+  filter: saturate(1.15) contrast(1.05);
+}
+/* Darken toward the text side + floor so copy always reads. */
+.hero__bg::after {
+  content: ''; position: absolute; inset: 0;
+  background:
+    radial-gradient(120% 80% at 70% 40%, transparent 30%, rgb(13 9 9 / 0.7) 80%),
+    linear-gradient(90deg, rgb(13 9 9 / 0.85) 0%, rgb(13 9 9 / 0.3) 45%, transparent 70%);
+}
+/* hero-horde slot: silhouette wall of zombies. Stand-in = dark ragged ridge. */
+.hero__horde {
+  z-index: -3; top: auto; height: 38%;
+  background:
+    radial-gradient(40px 60px at 8% 100%, #000 60%, transparent 61%),
+    radial-gradient(36px 70px at 22% 100%, #000 60%, transparent 61%),
+    radial-gradient(44px 56px at 37% 100%, #000 60%, transparent 61%),
+    radial-gradient(38px 66px at 54% 100%, #000 60%, transparent 61%),
+    radial-gradient(42px 62px at 71% 100%, #000 60%, transparent 61%),
+    radial-gradient(40px 72px at 88% 100%, #000 60%, transparent 61%),
+    linear-gradient(transparent 40%, rgb(13 9 9 / 0.95));
+  opacity: 0.8;
+}
+.hero__char {
+  position: absolute; z-index: -2; right: max(-4vw, -60px); bottom: -4%;
+  width: min(62vw, 980px); aspect-ratio: 1;
+}
+.hero__char img {
+  width: 100%; height: 100%; object-fit: cover;
+  /* Square key art → feather the edges so it melts into the burst. */
+  mask-image: radial-gradient(closest-side, #000 62%, transparent 100%);
+}
+/* hero-hands slot: foreground zombie hands. Stand-in = floor shadow. */
+.hero__hands { z-index: -1; top: auto; height: 22%; background: linear-gradient(transparent, var(--ink) 85%); }
+
+.hero__embers { position: absolute; inset: 0; z-index: -2; pointer-events: none; overflow: hidden; }
+.hero__embers i {
+  position: absolute; bottom: -10px; width: 4px; height: 4px; border-radius: 50%;
+  background: var(--hazard); box-shadow: 0 0 8px 2px var(--ember);
+  animation: ember linear infinite; scale: var(--s);
+}
+@keyframes ember {
+  0% { transform: translate(0, 0); opacity: 0; }
+  10% { opacity: 1; }
+  100% { transform: translate(var(--drift), -105vh); opacity: 0; }
+}
+
+.hero__content { position: relative; max-width: 640px; padding-top: 60px; }
+.hero__content .kicker { margin-bottom: 1.6em; }
+.hero__title {
+  margin: 0 0 24px; display: flex; flex-direction: column;
+  font: 400 clamp(84px, 14vw, 220px)/0.82 var(--f-display); text-transform: uppercase;
+  transform: rotate(-3deg); transform-origin: left;
+}
+.hero__title span { display: block; overflow: hidden; padding-bottom: 0.04em; }
+.hero__title span:first-child {
+  color: var(--bone);
+  -webkit-text-stroke: 3px #000; paint-order: stroke fill;
+  text-shadow: 6px 6px 0 #000;
+}
+.hero__title span:last-child {
+  color: var(--blood); margin-left: 0.3em;
+  -webkit-text-stroke: 3px #000; paint-order: stroke fill;
+  text-shadow: 6px 6px 0 #000, 0 0 60px rgb(255 60 30 / 0.5);
+}
+.hero__tag { margin: 0 0 36px; max-width: 30ch; font: 600 clamp(19px, 1.6vw, 24px)/1.35 var(--f-body); text-shadow: 0 2px 12px #000; }
+.hero__ctas { display: flex; flex-wrap: wrap; gap: 20px; align-items: center; }
+
+.hero__scroll {
+  position: absolute; left: 50%; bottom: 28px; translate: -50% 0;
+  font: 800 12px/1 var(--f-cond); letter-spacing: 0.4em; text-transform: uppercase; color: var(--bone-dim);
+}
+.hero__scroll::after {
+  content: ''; display: block; width: 2px; height: 40px; margin: 10px auto 0;
+  background: linear-gradient(var(--hazard), transparent); animation: drip 1.8s var(--ease-out) infinite;
+}
+@keyframes drip { 0% { transform: scaleY(0); transform-origin: top; } 60% { transform: scaleY(1); transform-origin: top; } 100% { transform: scaleY(0); transform-origin: bottom; } }
+
+@media (max-width: 760px) {
+  .hero { align-items: flex-end; padding-bottom: 90px; }
+  .hero__char { width: 115vw; right: -30vw; bottom: auto; top: 6%; opacity: 0.75; }
+  .hero__content { padding-top: 0; }
+  .hero__content .kicker { margin-bottom: 2.6em; }
+  .hero__scroll { display: none; }
+}
